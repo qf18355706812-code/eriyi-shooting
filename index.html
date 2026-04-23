@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>上杉绘梨衣 · 拍摄策划案</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --red: #C41E3A;
+    --red-light: #E8394D;
+    --red-dark: #8B1528;
+    --gold: #D4A853;
+    --gold-light: #E8C87A;
+    --white: #FFF8F0;
+    --cream: #FDF5EC;
+    --black: #1A1118;
+    --dark: #231820;
+    --gray: #6B5E66;
+    --gray-light: #B8A8AE;
+    --sakura: #FFB7C5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== SAKURA ===== */
+  .sakura-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden; }
+  .petal { position: absolute; background: var(--sakura); border-radius: 50% 0 50% 50%; opacity: 0; animation: petal-fall linear infinite; }
+  @keyframes petal-fall {
+    0% { opacity: 0; transform: translateY(-5vh) rotate(0deg) translateX(0); }
+    10% { opacity: .6; }
+    90% { opacity: .4; }
+    100% { opacity: 0; transform: translateY(105vh) rotate(540deg) translateX(80px); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 70%, rgba(196,30,58,.12) 0%, transparent 60%),
+                linear-gradient(180deg, #0D0A0C, var(--black), #0D0A0C);
+    padding: 60px 24px;
+    position: relative;
+  }
+  .hero-label {
+    font-size: 11px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase;
+    margin-bottom: 18px; opacity: 0; animation: fadeUp .8s .2s forwards;
+  }
+  .hero-title {
+    font-family: 'Noto Serif SC', serif; font-size: clamp(38px,9vw,68px); font-weight: 700;
+    line-height: 1.25; margin-bottom: 14px; opacity: 0; animation: fadeUp .8s .4s forwards;
+  }
+  .hero-title em { font-style: normal; color: var(--red); text-shadow: 0 0 50px rgba(196,30,58,.4); }
+  .hero-quote {
+    font-family: 'Noto Serif SC', serif; font-size: 15px; color: var(--gray-light);
+    font-style: italic; max-width: 400px; opacity: 0; animation: fadeUp .8s .6s forwards;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 36px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    opacity: 0; animation: fadeUp .8s 1s forwards;
+  }
+  .hero-scroll span { font-size: 10px; letter-spacing: 5px; color: var(--gray); }
+  .hero-scroll i { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:.3;transform:scaleY(.5)} 50%{opacity:1;transform:scaleY(1)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ===== COMMON ===== */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  .section-gap { height: 60px; }
+
+  /* ===== POSE CARD ===== */
+  .pose-card {
+    margin-bottom: 64px;
+    background: var(--dark);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(212,168,83,.1);
+    transition: border-color .3s;
+  }
+  .pose-card:hover { border-color: rgba(212,168,83,.25); }
+
+  /* Image area */
+  .pose-img-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #0D0A0C;
+  }
+  .pose-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 560px;
+  }
+  .pose-img-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--dark) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .pose-img-badge {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(196,30,58,.85); backdrop-filter: blur(8px);
+    color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    padding: 6px 16px; border-radius: 20px;
+  }
+  .pose-img-title {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    z-index: 2;
+  }
+  .pose-img-title h2 {
+    font-family: 'Noto Serif SC', serif; font-size: clamp(26px,5vw,36px); font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pose-img-title h2 em { font-style: normal; color: var(--gold); }
+  .pose-img-title .mood { font-size: 13px; color: var(--sakura); letter-spacing: 2px; }
+
+  /* Body */
+  .pose-body { padding: 28px 24px 32px; }
+
+  .pose-quote {
+    font-family: 'Noto Serif SC', serif; font-size: 15px; color: var(--gold-light);
+    font-style: italic; line-height: 1.7;
+    padding: 16px 20px; margin-bottom: 28px;
+    border-left: 3px solid var(--red);
+    background: rgba(196,30,58,.04);
+    border-radius: 0 10px 10px 0;
+  }
+
+  .block-label {
+    font-size: 11px; letter-spacing: 5px; color: var(--red-light); text-transform: uppercase;
+    margin-bottom: 14px; margin-top: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .block-label:first-child { margin-top: 0; }
+  .block-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, rgba(196,30,58,.25), transparent); }
+
+  /* Detail table */
+  .detail-table { width: 100%; border-collapse: collapse; }
+  .detail-table tr { border-bottom: 1px solid rgba(255,255,255,.04); }
+  .detail-table tr:last-child { border-bottom: none; }
+  .detail-table td { padding: 9px 0; font-size: 14px; line-height: 1.65; vertical-align: top; }
+  .detail-table .lbl { width: 80px; color: var(--gold); font-size: 13px; white-space: nowrap; padding-right: 10px; }
+  .detail-table strong { color: var(--gold-light); font-weight: 500; }
+
+  /* Soul points */
+  .soul-list { list-style: none; }
+  .soul-list li {
+    position: relative; padding: 11px 0 11px 26px;
+    font-size: 14px; line-height: 1.65;
+    border-bottom: 1px solid rgba(255,255,255,.03);
+  }
+  .soul-list li:last-child { border-bottom: none; }
+  .soul-list li::before { content: '⭐'; position: absolute; left: 0; top: 11px; font-size: 13px; }
+  .soul-list .hl { color: var(--gold-light); font-weight: 500; }
+
+  /* Photo tips grid */
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 10px; }
+  .tip-box {
+    background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.05);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .tip-box .t { font-size: 11px; color: var(--gray-light); letter-spacing: 2px; margin-bottom: 3px; }
+  .tip-box .v { font-size: 14px; color: var(--white); font-weight: 500; }
+
+  /* Scene adapt */
+  .scene-box {
+    background: linear-gradient(135deg, rgba(196,30,58,.05), rgba(26,17,24,.6));
+    border: 1px solid rgba(196,30,58,.12);
+    border-radius: 12px; padding: 18px 20px; margin-top: 8px;
+  }
+  .scene-box h4 { font-size: 13px; color: var(--sakura); margin-bottom: 6px; }
+  .scene-box p { font-size: 13px; color: var(--gray-light); line-height: 1.7; }
+  .scene-tag {
+    display: inline-block; background: rgba(196,30,58,.18); color: var(--sakura);
+    font-size: 11px; padding: 2px 10px; border-radius: 20px;
+    margin-right: 4px; margin-bottom: 3px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 24px 0; max-width: 780px; margin: 0 auto;
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(212,168,83,.2), transparent); }
+  .divider span { color: var(--gold); font-size: 16px; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center; padding: 56px 24px 36px;
+    border-top: 1px solid rgba(255,255,255,.04);
+  }
+  .footer-q {
+    font-family: 'Noto Serif SC', serif; font-size: 17px; color: var(--gray-light);
+    font-style: italic; line-height: 1.8; margin-bottom: 20px;
+  }
+  .footer-q em { font-style: normal; color: var(--red-light); }
+  .footer-c { font-size: 11px; color: var(--gray); letter-spacing: 3px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .pose-body { padding: 22px 18px 28px; }
+    .tips-grid { grid-template-columns: 1fr 1fr; }
+    .pose-img-wrap img { max-height: 420px; }
+  }
+</style>
+</head>
+<body>
+<div class="sakura-wrap" id="sakura"></div>
+<div class="hero">
+  <div class="hero-label">龙族 · COSPLAY 拍摄策划</div>
+  <h1 class="hero-title">上杉<em>绘梨衣</em></h1>
+  <p class="hero-quote">“路明非，你看，樱花开了。”</p>
+  <div class="hero-scroll"><span>SCROLL</span><i></i></div>
+</div>
+<div class="section-gap"></div>
+<div class="container">
+  <div class="section-label" style="text-align:center">40 POSES · SHOOTING PLAN</div>
+  <h2 class="section-title" style="text-align:center;margin-bottom:48px">动作指导卡</h2>
+
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose00.png" alt="跪坐横刀" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 00</div>
+      <div class="pose-img-title">
+        <h2>跪坐横刀</h2>
+        <div class="mood">冷静 · 端庄 · 仪式感</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">跪坐直视，双手交叠握刀于腿前，刀身横斜，神情清冷微柔。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>正座</strong>（日式跪坐），双膝并拢，脚背贴地，臀部轻坐脚跟</td></tr>
+<tr><td class="lbl">🤲 双手</td><td>双手在腿前相叠，<strong>握住刀鞘中段</strong>，刀自然横斜放于双膝前方</td></tr>
+<tr><td class="lbl">⚔️ 刀</td><td>刀尖朝右斜下，刀柄朝左斜上（约20°斜线），<strong>不要水平</strong></td></tr>
+<tr><td class="lbl">💪 肩膀</td><td>肩膀<strong>微微下沉放松</strong>，不要耸不要僵</td></tr>
+<tr><td class="lbl">🎎 身体</td><td><strong>背挺直</strong>但不绷紧，微微前倾约5°</td></tr>
+<tr><td class="lbl">👀 眼神</td><td>平视或略微抬眼<strong>直视镜头</strong></td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇<strong>自然闭合</strong></td></tr>
+<tr><td class="lbl">💇 头发</td><td>两侧头发<strong>自然垂落肩前</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">刀是&ldquo;斜&rdquo;的</span> &mdash; 横放平淡，斜放才有张力</li>
+<li><span class="hl">眼神&ldquo;冷中带柔&rdquo;</span> &mdash; 不是凶不是甜，是&ldquo;我什么都知道但我不说&rdquo;</li>
+<li><span class="hl">肩膀要&ldquo;松&rdquo;</span> &mdash; 紧了变武士，松了才是少女</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8-4.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">柔和自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 樱花+榻榻米</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">05 禅意日式</span> 更空灵简约</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose01.png" alt="拔刀·凌" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 01</div>
+      <div class="pose-img-title">
+        <h2>拔刀·凌</h2>
+        <div class="mood">凌厉 · 飒 · 动态张力</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">侧坐拔刀，右手举刀出鞘至半露刃，左手握鞘于腹前，眼神斜下方凝视。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐</strong>，左腿盘坐、右膝微立，呈3/4侧面对镜头</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>握刀柄，<strong>向右上方斜举</strong>拔出，刀刃出鞘约1/3</td></tr>
+<tr><td class="lbl">🤲 左手</td><td>握刀鞘中下段，鞘身<strong>斜穿身前</strong></td></tr>
+<tr><td class="lbl">⚔️ 刀</td><td>刀身+鞘呈<strong>对角线</strong>，约30-40°斜线</td></tr>
+<tr><td class="lbl">💪 肩膀</td><td>右肩<strong>微抬</strong>，左肩自然下沉，形成<strong>高低肩</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>斜向左下方凝视</strong>，不看镜头</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇微抿，<strong>不笑</strong></td></tr>
+<tr><td class="lbl">👘 袖口</td><td>大袖<strong>自然下垂飘开</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">对角线构图</span> &mdash; 刀+鞘从右上到左下穿过画面</li>
+<li><span class="hl">&ldquo;拔到一半&rdquo;才有劲</span> &mdash; 半出鞘才有凝固动态感</li>
+<li><span class="hl">眼神不看镜头</span> &mdash; 看左下方，飒感拉满</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面偏低仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">侧光/侧逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 经典武士少女</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">18 暗黑哥特</span> 暗色反衬</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose02.png" alt="花隐·守" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 02</div>
+      <div class="pose-img-title">
+        <h2>花隐·守</h2>
+        <div class="mood">无辜 · 治愈 · 危险少女</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">蹲坐花丛中，刀竖直撑在身前，歪头看镜头——清纯中带危险。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>蹲坐</strong>，整个人&ldquo;缩&rdquo;在花丛里</td></tr>
+<tr><td class="lbl">⚔️ 刀</td><td>刀鞘<strong>竖直立在身前</strong>，刀柄朝上、鞘尾触地</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>轻握刀鞘上段——<strong>不是攥紧，是&ldquo;搭着&rdquo;</strong></td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>微微右歪</strong>约10°</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，清澈</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇<strong>微微张开</strong>——无辜感</td></tr>
+<tr><td class="lbl">💇 头发</td><td>红发<strong>自然垂落身前</strong></td></tr>
+<tr><td class="lbl">👘 袖口</td><td>红色大袖<strong>铺开在腿两侧和地上</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">刀是&ldquo;靠着&rdquo;不是&ldquo;握着&rdquo;</span> &mdash; 松松搭上去</li>
+<li><span class="hl">&ldquo;缩&rdquo;在花里</span> &mdash; 让花丛齐肩或高于肩</li>
+<li><span class="hl">微张嘴+歪头</span> &mdash; 组合=无辜杀手</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.4-2.0</div></div>
+<div class="tip-box"><div class="t">对焦</div><div class="v">眼睛</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然散射光</div></div>
+<div class="tip-box"><div class="t">背景</div><div class="v">花丛虚化光斑</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外花海</span> 雏菊/野花丛</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 樱花枝垂到肩两侧</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose03.png" alt="回眸·恋" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 03</div>
+      <div class="pose-img-title">
+        <h2>回眸·恋</h2>
+        <div class="mood">温柔 · 眷恋 · 樱花告别</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">背对镜头侧坐在樱花纷飞的和室中回头望——你还在吗?</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐地面</strong>，裙摆铺散在地面</td></tr>
+<tr><td class="lbl">🎎 身体</td><td><strong>背对镜头约120°</strong>，上身扭转回头——脊椎呈S型曲线</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>微微垂眼</strong>，不舍与眷恋</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇<strong>自然微启</strong>——欲言又止</td></tr>
+<tr><td class="lbl">💇 头发</td><td>红发从肩膀<strong>自然垂落</strong>，露出后颈线条</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>地面散落樱花瓣，身旁小黄鸭和灯笼</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">背影是主体，脸是彩蛋</span> &mdash; 回眸的脸是情感锚点</li>
+<li><span class="hl">脊椎S型很关键</span> &mdash; 腰→肩→颈的螺旋扭转</li>
+<li><span class="hl">&ldquo;欲言又止&rdquo;的嘴</span> &mdash; 微启状态最有故事感</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">侧后方平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8-4.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">侧逆光/窗光</div></div>
+<div class="tip-box"><div class="t">前景</div><div class="v">虚化樱花枝</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 侧逆光从圆窗照入</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">05 禅意日式</span> 更素净</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose04.png" alt="廊下·憩" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 04</div>
+      <div class="pose-img-title">
+        <h2>廊下·憩</h2>
+        <div class="mood">日常 · 闲适 · 少女时光</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在樱花环绕的走廊边，一手持杯一手摸小黄鸭，赤脚晃悠。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>坐在廊沿/台阶上</strong>，双腿自然下垂</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>持一只日式茶杯</td></tr>
+<tr><td class="lbl">🤲 左手</td><td>手指轻触旁边矮桌上的<strong>小黄鸭</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td>微笑看镜头，放松的<strong>月牙眼</strong></td></tr>
+<tr><td class="lbl">👣 脚</td><td><strong>赤脚</strong>，脚趾自然放松</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>樱花+灯笼+小黄鸭，暖色调</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">双手各有道具</span> &mdash; 一杯一鸭让画面信息量丰富</li>
+<li><span class="hl">赤脚是灵魂</span> &mdash; 穿鞋变正式，赤脚才有松弛感</li>
+<li><span class="hl">笑要自然</span> &mdash; 不是摆拍笑，是真笑</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视或略低</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然侧光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 走廊/台阶/门槛</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">05 禅意日式</span> 窗边替代</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose05.png" alt="红伞·坐" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 05</div>
+      <div class="pose-img-title">
+        <h2>红伞·坐</h2>
+        <div class="mood">梦幻 · 少女 · 和风美学</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在落樱满地的和室中，身后撑开一把红色和伞——红白粉视觉盛宴。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐地面</strong>，裙摆自然铺开</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>肩后<strong>撑开红色和伞</strong></td></tr>
+<tr><td class="lbl">🤲 左手</td><td>自然搭在膝上或轻触<strong>小黄鸭</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头微笑</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>地面大量樱花花瓣，灯笼暖光，伞面透光</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">伞是构图的&ldquo;圆&rdquo;</span> &mdash; 红色圆形伞面填充上半画面</li>
+<li><span class="hl">伞面透光</span> &mdash; 让光穿过伞面照到脸上</li>
+<li><span class="hl">花瓣要铺够</span> &mdash; 地面花瓣越多氛围越强</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光+伞面透光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 完美匹配</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">自带红伞</span> 淘宝搜&ldquo;和风油纸伞&rdquo;30-60元</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose06.png" alt="托腮·盼" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 06</div>
+      <div class="pose-img-title">
+        <h2>托腮·盼</h2>
+        <div class="mood">甜美 · 期待 · 少女心</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">圆窗逆光前，一手托腮微微歪头——等你回来的样子。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>上半身正对镜头</strong>，微微前倾</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>手指轻触脸颊/托腮</strong></td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>微微右歪</strong>，配合托腮</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，温柔带笑意</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴角<strong>轻轻上扬</strong></td></tr>
+<tr><td class="lbl">🌸 背景</td><td>圆窗+樱花枝+小黄鸭，逆光勾勒发丝金边</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">圆窗逆光=天然光环</span> &mdash; 人物自带光晕</li>
+<li><span class="hl">托腮手指要&ldquo;松&rdquo;</span> &mdash; 指尖轻轻碰到脸颊</li>
+<li><span class="hl">半身构图</span> &mdash; 突出表情和手部细节</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.8-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光/侧逆光</div></div>
+<div class="tip-box"><div class="t">对焦</div><div class="v">眼睛</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 有圆窗位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何有窗光的场景</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose07.png" alt="挥刃·斩" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 07</div>
+      <div class="pose-img-title">
+        <h2>挥刃·斩</h2>
+        <div class="mood">飒 · 动态 · 战斗感</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">樱花中出鞘横斩，刀锋直指前方——天丛云剑出手的瞬间。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立或半蹲</strong>，身体微侧转，重心前移</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>单手持刀水平伸出</strong>，刀刃完全出鞘</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向刀尖方向</strong>，锐利专注</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴角微扬——<strong>战斗中的自信微笑</strong></td></tr>
+<tr><td class="lbl">💇 头发</td><td>长发被甩起<strong>向后飘</strong></td></tr>
+<tr><td class="lbl">👘 袖口</td><td>大袖随动作<strong>完全张开飘起</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">抓拍!抓拍!抓拍!</span> &mdash; 连拍模式，在挥刀+头发飘起瞬间按快门</li>
+<li><span class="hl">刀尖指向画面外</span> &mdash; 暗示斩向敌人</li>
+<li><span class="hl">前景可以有花瓣</span> &mdash; 抛撒花瓣配合挥刀</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">快门</div><div class="v">1/500+高速</div></div>
+<div class="tip-box"><div class="t">模式</div><div class="v">连拍抓拍</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 空间足够</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外</span> 更开阔</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose08.png" alt="画板·念" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 08</div>
+      <div class="pose-img-title">
+        <h2>画板·念</h2>
+        <div class="mood">天真 · 治愈 · 孩子气</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在花海中怀抱画板，上面画着小怪兽——最纯真的绘梨衣。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>盘坐在花丛中</strong></td></tr>
+<tr><td class="lbl">🤲 双手</td><td><strong>双手环抱画板</strong>贴在胸前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，清澈带一丝忧愁</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇微微<strong>嘟起</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>小黄鸭在头顶，雏菊环绕</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">画板是叙事道具</span> &mdash; 小怪兽涂鸦是龙族经典元素</li>
+<li><span class="hl">抱画板要像抱宝贝</span> &mdash; 珍惜地贴在胸口</li>
+<li><span class="hl">大光圈虚化花海</span> &mdash; 花变柔和色块</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">俯拍或平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.4-2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然散射光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外花海</span> 雏菊/野花草地</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 铺花瓣+放画板</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose09.png" alt="花伞·立" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 09</div>
+      <div class="pose-img-title">
+        <h2>花伞·立</h2>
+        <div class="mood">清新 · 明媚 · 元气</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">花海中站立撑红伞，阳光穿透伞面——最明亮的绘梨衣。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立</strong>，身体微侧转</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>肩上撑开红色和伞</strong></td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>微微歪头</strong>面带微笑</td></tr>
+<tr><td class="lbl">💇 头发</td><td>长发自然垂落，被风轻轻吹动</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">仰拍显气场</span> &mdash; 低机位仰拍，天空+花海做背景</li>
+<li><span class="hl">红伞vs蓝天</span> &mdash; 色彩对比超抓眼</li>
+<li><span class="hl">风是最好的助手</span> &mdash; 等有风的瞬间按快门</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">低机位仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm广角</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/4-5.6</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然阳光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外花海/草地</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">17 莫奈花园</span> 室内替代</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose10.png" alt="花中·探" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 10</div>
+      <div class="pose-img-title">
+        <h2>花中·探</h2>
+        <div class="mood">空灵 · 好奇 · 仙气</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">从花丛中探出半身，一手轻轻向上抬起触碰花瓣。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>半身没入花丛</strong>，只露上半身</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>手指向上轻轻张开</strong>，像在触碰空气</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向手指方向</strong>，空灵</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇<strong>微启</strong>，好奇与惊叹</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">手的姿态是焦点</span> &mdash; 像芭蕾舞者的手</li>
+<li><span class="hl">花海要&ldquo;淹没&rdquo;人</span> &mdash; 花丛越高感觉越强</li>
+<li><span class="hl">逆光出仙气</span> &mdash; 发丝和花瓣都发光</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">平视或略低</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.8-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光/侧逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外花海</span> 花丛越高越好</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 利用垂落樱花枝</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose11.png" alt="伞阵·暗" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 11</div>
+      <div class="pose-img-title">
+        <h2>伞阵·暗</h2>
+        <div class="mood">暗黑 · 宿命 · 龙族血脉</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">暗色和室中，身边散落打开的和伞，枫叶如火——龙王之女的另一面。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐地面</strong>，裙摆铺开</td></tr>
+<tr><td class="lbl">🎎 身体</td><td>微微前倾，<strong>面向镜头</strong></td></tr>
+<tr><td class="lbl">⚔️ 刀</td><td>刀横放在身前地面</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，冷峻带悲凉</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>多把和伞散落+枫叶+灯笼暖光——<strong>暗调高对比</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">暗调控制环境光</span> &mdash; 只留灯笼和一点侧光</li>
+<li><span class="hl">和伞是构图元素</span> &mdash; 散落伞面填充画面</li>
+<li><span class="hl">枫叶=龙族火焰隐喻</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面略高俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm广角</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8-4.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">低光+点光源</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">18 暗黑哥特</span> 暗色系首选</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 关灯+自带灯笼</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose12.png" alt="抱刀·萌" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 12</div>
+      <div class="pose-img-title">
+        <h2>抱刀·萌</h2>
+        <div class="mood">俏皮 · 萌 · 反差</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在神社地板上双手抱刀歪头微笑——萌系战斗少女。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>随意坐在木地板上</strong></td></tr>
+<tr><td class="lbl">🤲 双手</td><td>双手<strong>抱着入鞘的刀</strong>靠在肩上/胸前</td></tr>
+<tr><td class="lbl">👤 头部</td><td>歪头靠向刀的方向</td></tr>
+<tr><td class="lbl">👀 眼神</td><td>直视镜头，<strong>大眼睛</strong></td></tr>
+<tr><td class="lbl">👄 嘴</td><td>微微<strong>嘟嘴或微笑</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">抱刀像抱玩偶</span> &mdash; 是&ldquo;我的宝贝&rdquo;</li>
+<li><span class="hl">小黄鸭要出镜</span> &mdash; 别被刀挡住</li>
+<li><span class="hl">和&ldquo;拔刀·凌&rdquo;形成反差</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略高俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然柔光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 榻榻米/木地板</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外神社</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose13.png" alt="廊边·坐" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 13</div>
+      <div class="pose-img-title">
+        <h2>廊边·坐</h2>
+        <div class="mood">安静 · 等待 · 治愈</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在神社走廊的石子地上——安静地等一个人。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>坐在走廊台阶/地上</strong>，一脚悬空</td></tr>
+<tr><td class="lbl">🎎 身体</td><td>身体微前倾，<strong>自然放松</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>微微侧望</strong>或远方</td></tr>
+<tr><td class="lbl">👣 脚</td><td><strong>白袜+红色木屐</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>樱花+灯笼+红伞做背景</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">&ldquo;等待&rdquo;比&ldquo;行动&rdquo;更有故事</span></li>
+<li><span class="hl">木屐和白袜的细节</span> &mdash; 拍一张脚部特写</li>
+<li><span class="hl">走廊纵深感</span> &mdash; 利用走廊长度</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">侧面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社走廊</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 门槛/走廊替代</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose14.png" alt="神社·伞行" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 14</div>
+      <div class="pose-img-title">
+        <h2>神社·伞行</h2>
+        <div class="mood">神性 · 仪式 · 庄严</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">神社红色殿堂中撑伞回眸——巫女归来。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立微侧转</strong>，像正在走动中回头</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>肩上撑红色和伞</strong></td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>回头看镜头</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td>淡然中带<strong>神性距离感</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>红色殿柱+注连绳+灯笼+障子门</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">红色殿柱做&ldquo;画框&rdquo;</span> &mdash; 天然框架构图</li>
+<li><span class="hl">&ldquo;行走中回头&rdquo;的动感</span> &mdash; 要有迈步感</li>
+<li><span class="hl">神社元素越多越好</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8-4.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光/侧光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社</span> 有红色殿堂</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 木格栅+红布</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose15.png" alt="神社·伞立" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 15</div>
+      <div class="pose-img-title">
+        <h2>神社·伞立</h2>
+        <div class="mood">优雅 · 神性 · 侧影</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">神社殿内侧身站立，撑伞抬手触碰注连绳——巫女与神社的对话。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>侧身站立</strong></td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>上举触碰头顶绳索/风铃</strong></td></tr>
+<tr><td class="lbl">🤲 左手</td><td>背后撑伞</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>抬头看手指方向</strong>或闭眼</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">侧身轮廓线</span> &mdash; 展现和服层次感</li>
+<li><span class="hl">手指&ldquo;点到即止&rdquo;</span></li>
+<li><span class="hl">逆光剪影</span> &mdash; 障子门透光做背景</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">侧面</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光/侧逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 吊绳+风铃道具</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose16.png" alt="夜廊·伞立" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 16</div>
+      <div class="pose-img-title">
+        <h2>夜廊·伞立</h2>
+        <div class="mood">妖艳 · 夜 · 华丽</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">夜色中神社走廊，暖色灯笼映照下撑伞正面站立——妖艳的皇女。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>正面站立</strong>，微微侧身</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，微微挑眉</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴角<strong>上扬微笑</strong>——自信的笑</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>夜色+暖色灯笼+樱花+和伞</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">暖色灯光=氛围神器</span></li>
+<li><span class="hl">夜景要补光</span> &mdash; LED暖光从侧面打</li>
+<li><span class="hl">&ldquo;皇女气质&rdquo;</span> &mdash; 拍出家主的气场</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略低仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.8-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">暖色灯笼+补光</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">800-1600</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社夜景</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 关灯+灯笼布光</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose17.png" alt="樱灯·鸭" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 17</div>
+      <div class="pose-img-title">
+        <h2>樱灯·鸭</h2>
+        <div class="mood">治愈 · 温暖 · 日常</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">廊下夜色中坐着，手里举着一只小黄鸭——最温暖的瞬间。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>坐在廊沿</strong></td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>手持一只小黄鸭</strong>举到面前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看着小黄鸭</strong>或看镜头微笑</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>夜色樱花+灯笼暖光+红伞</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">小黄鸭和人物的互动</span> &mdash; 像在和鸭子说话</li>
+<li><span class="hl">灯笼暖光</span> &mdash; 夜景的灵魂</li>
+<li><span class="hl">日常绘梨衣</span> &mdash; 没有刀没有宿命</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略高俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">灯笼暖光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> + 灯笼道具</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何暗处</span> + 灯笼</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose18.png" alt="樱下·握拳" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 18</div>
+      <div class="pose-img-title">
+        <h2>樱下·握拳</h2>
+        <div class="mood">坚定 · 少女 · 力量</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">樱花下微微握拳看向镜头——决定好要做什么了。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>坐姿微前倾</strong></td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>手指微微握拳</strong>放在胸前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，清澈中带<strong>坚定</strong></td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴角微微<strong>上扬</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">握拳是情绪转折点</span> &mdash; 从天真到坚定</li>
+<li><span class="hl">不要握太紧</span> &mdash; 少女的握拳是手指轻轻蜷起</li>
+<li><span class="hl">配合樱花落肩</span> &mdash; 命运感+1000</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">平视或略低</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然侧光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 樱花下</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外樱花</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose19.png" alt="庭院·仰手" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 19</div>
+      <div class="pose-img-title">
+        <h2>庭院·仰手</h2>
+        <div class="mood">自由 · 向往 · 触碰天空</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">坐在枯山水庭院中仰头举手——我可以变成一只鸟。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐在白石子地面</strong></td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>向上举起</strong>，手指张开伸向天空</td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>仰头</strong>看向手指方向</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向天空</strong>，渴望和自由</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>枯山水石子+灯笼+和伞+樱花</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">&ldquo;变成鸟&rdquo;经典台词</span> &mdash; 直接对应小说名场面</li>
+<li><span class="hl">手要伸到画面最高处</span></li>
+<li><span class="hl">留大量天空/上方空间</span> &mdash; 人在下方1/3</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">低机位仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/4</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光/逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社庭院</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 门口石子地</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose20.png" alt="殿前·竖刀" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 20</div>
+      <div class="pose-img-title">
+        <h2>殿前·竖刀</h2>
+        <div class="mood">孤独 · 守护 · 宿命</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">神社殿前侧坐，一手竖立长刀——独自守护的孤独身影。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐</strong>在木地板，一腿伸直</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>手持刀竖直立在身侧</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，平静带疲惫</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>神社殿内古朴道具</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">伸直的腿=松弛感</span> &mdash; 战斗结束后的疲惫</li>
+<li><span class="hl">刀竖在身侧像伙伴</span></li>
+<li><span class="hl">空间感</span> &mdash; 人偏一侧，另一侧留空</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略高俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然侧光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社殿内</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose21.png" alt="殿前·抱刀" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 21</div>
+      <div class="pose-img-title">
+        <h2>殿前·抱刀</h2>
+        <div class="mood">警惕 · 少女 · 守护</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">殿前盘坐抱刀直视镜头——谁敢靠近就拔刀。但表情又像只小猫。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>盘坐</strong>在木地板</td></tr>
+<tr><td class="lbl">🤲 双手</td><td><strong>双手抱刀</strong>竖在身前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，微微瞪眼</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇微<strong>嘟起</strong>——警惕但可爱</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">&ldquo;像猫一样乖巧&rdquo;</span> &mdash; 猫的警觉+软萌</li>
+<li><span class="hl">抱刀力度</span> &mdash; 比12号稍紧，像在保护什么</li>
+<li><span class="hl">略高俯拍显可爱</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略高俯拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外神社殿内</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose22.png" alt="趴桌·鸭" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 22</div>
+      <div class="pose-img-title">
+        <h2>趴桌·鸭</h2>
+        <div class="mood">可爱 · 慵懒 · 日常</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">趴在矮桌上和小黄鸭对视——今天不想打架了。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>趴在矮桌上</strong>，手臂交叠枕着头</td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>侧脸贴在手臂上</strong>，看桌上小黄鸭</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向小黄鸭</strong>，温柔放空</td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴角<strong>轻扬微笑</strong></td></tr>
+<tr><td class="lbl">🦆 道具</td><td>桌上<strong>2-3只小黄鸭</strong>+茶杯</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">趴下来才是日常</span></li>
+<li><span class="hl">脸贴手臂45°</span> &mdash; 露一只眼看鸭子</li>
+<li><span class="hl">大光圈虚化前景</span> &mdash; 鸭子在前景虚化</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">桌面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.4-2.0</div></div>
+<div class="tip-box"><div class="t">对焦</div><div class="v">眼睛</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">暖色侧光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 矮桌位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何有矮桌的场景</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose23.png" alt="跪伞·微笑" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 23</div>
+      <div class="pose-img-title">
+        <h2>跪伞·微笑</h2>
+        <div class="mood">治愈 · 温柔 · 经典</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">圆窗前跪坐撑伞微笑，樱花铺满地面——最经典的绘梨衣。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>正跪坐</strong>，裙摆铺开</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>肩后撑红色和伞</strong></td></tr>
+<tr><td class="lbl">🤲 左手</td><td>自然放在膝前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>温柔微笑</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>圆窗逆光+落樱+小黄鸭</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">这是&ldquo;封面图&rdquo;级别</span> &mdash; 最经典最安全的构图</li>
+<li><span class="hl">圆窗=天然光环</span></li>
+<li><span class="hl">花瓣不嫌多</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 圆窗位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何有拱形窗的场景</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose24.png" alt="伞舞·举手" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 24</div>
+      <div class="pose-img-title">
+        <h2>伞舞·举手</h2>
+        <div class="mood">浪漫 · 梦幻 · 绽放</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">撑伞跪坐在樱花中，一手高举接飘落花瓣——最浪漫的瞬间。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>跪坐</strong>，身体微后仰</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>高举过头</strong>，手指张开接花瓣</td></tr>
+<tr><td class="lbl">🤲 左手</td><td>身后撑伞</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>仰头看向举起的手</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>大量樱花从头顶飘落</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">花瓣从头顶撒下</span> &mdash; 需要助手撒花瓣+连拍</li>
+<li><span class="hl">手臂线条要美</span> &mdash; 像接住珍贵的东西</li>
+<li><span class="hl">仰头+闭眼</span> &mdash; 最梦幻</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或侧面</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">快门</div><div class="v">1/250+</div></div>
+<div class="tip-box"><div class="t">模式</div><div class="v">连拍</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外樱花树下</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose25.png" alt="接瓣·侧身" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 25</div>
+      <div class="pose-img-title">
+        <h2>接瓣·侧身</h2>
+        <div class="mood">空灵 · 宿命 · 诗意</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">侧身伸手接住飘落的樱花瓣——命运落在掌心的瞬间。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>侧坐</strong>，朝向画面一侧</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>向侧前方伸出</strong>，手掌朝上接花瓣</td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>微低头</strong>看向手掌</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>大量花瓣飘落+灯笼+圆窗光</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">手掌朝上是关键</span> &mdash; &ldquo;接住&rdquo;而不是&ldquo;抓住&rdquo;</li>
+<li><span class="hl">侧身让画面有方向性</span></li>
+<li><span class="hl">低头看手掌</span> &mdash; 沉浸在自己的世界</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">3/4侧面</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">侧逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外樱花</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose26.png" alt="托腮·盼B" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 26</div>
+      <div class="pose-img-title">
+        <h2>托腮·盼B</h2>
+        <div class="mood">甜美 · 温柔 · 变体</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">与&ldquo;托腮·盼&rdquo;相似但更柔和——双手都参与，像在框住自己的脸。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td><strong>手指轻触脸颊</strong>，配合歪头</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，温柔微笑</td></tr>
+<tr><td class="lbl">🌸 背景</td><td>圆窗+樱花+小黄鸭</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">和06是&ldquo;配对&rdquo;</span> &mdash; 后期选片二选一</li>
+<li><span class="hl">表情更放松</span> &mdash; 比06笑得更自然</li>
+<li><span class="hl">发辫搭在肩前</span> &mdash; 红色发辫垂在白衣上</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.8-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 圆窗位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>同06</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose27.png" alt="回眸·恋B" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 27</div>
+      <div class="pose-img-title">
+        <h2>回眸·恋B</h2>
+        <div class="mood">眷恋 · 诀别 · 背影</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">与&ldquo;回眸·恋&rdquo;同系列——背身回头，手持红色扇子，更不舍。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>背对镜头侧坐</strong>，回头望</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>手持<strong>红色小扇子</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>回头看镜头</strong>，温柔中带不舍</td></tr>
+<tr><td class="lbl">💇 头发</td><td>发辫垂落背后，露出后颈和肩膀</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">和03是&ldquo;配对&rdquo;</span> &mdash; 后期可组系列</li>
+<li><span class="hl">扇子增加手部细节</span></li>
+<li><span class="hl">后颈线条</span> &mdash; 和服后领微拉露出后颈</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">侧后方</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">侧逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>同03</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose28.png" alt="樱廊·全景" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 28</div>
+      <div class="pose-img-title">
+        <h2>樱廊·全景</h2>
+        <div class="mood">史诗 · 叙事 · 电影感</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">把所有元素收入一张全景——绘梨衣是其中的一点红。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🦵 坐姿</td><td><strong>侧坐在廊沿</strong></td></tr>
+<tr><td class="lbl">🎎 构图</td><td><strong>人物占画面1/3</strong>，其余给环境</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>石灯笼+樱花+圆窗光+小黄鸭——<strong>全景叙事</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">景大人小=电影感</span></li>
+<li><span class="hl">用广角收全景</span> &mdash; 24-35mm</li>
+<li><span class="hl">可以做封面/横幅</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm广角</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/4-5.6</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 全景位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">户外神社</span> 全景</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose29.png" alt="樱中·回眸" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 29</div>
+      <div class="pose-img-title">
+        <h2>樱中·回眸</h2>
+        <div class="mood">妩媚 · 梦幻 · 夜</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">夜樱中撑伞回头半身像——发丝和樱花在暖光中发光。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>背对镜头转身回头</strong></td></tr>
+<tr><td class="lbl">🤚 右手</td><td>肩后撑伞</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>回头微笑看镜头</strong></td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>夜樱+暖色补光</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">夜樱需要补光</span> &mdash; LED暖光从侧面打</li>
+<li><span class="hl">浅景深虚化花瓣</span></li>
+<li><span class="hl">表情比白天更放得开</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面或3/4侧</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.4-2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">LED补光</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">800-1600</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外夜樱</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 关灯+补光</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose30.png" alt="托腮·持扇" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 30</div>
+      <div class="pose-img-title">
+        <h2>托腮·持扇</h2>
+        <div class="mood">日常 · 甜 · 闺房</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">圆窗前托腮持扇，旁边放着小黄鸭和茶杯——闺房日常。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td><strong>托腮</strong></td></tr>
+<tr><td class="lbl">🤲 左手</td><td>手持红色<strong>小折扇</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看镜头微笑</strong></td></tr>
+<tr><td class="lbl">🦆 道具</td><td>旁边小黄鸭+茶杯</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">扇子增加手部细节</span></li>
+<li><span class="hl">06/26/30是系列</span> &mdash; 圆窗托腮三连</li>
+<li><span class="hl">最轻松的表情</span> &mdash; 三张中笑得最开</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">逆光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 圆窗</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>同06/26</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose31.png" alt="夜樱·仰望" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 31</div>
+      <div class="pose-img-title">
+        <h2>夜樱·仰望</h2>
+        <div class="mood">唯美 · 忧伤 · 孤独</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">撑伞站在夜樱下仰头望花——樱花很美，看樱花的她更美。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立</strong>，微后仰</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>肩上撑伞</td></tr>
+<tr><td class="lbl">👤 头部</td><td><strong>仰头看向头顶樱花</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向花枝</strong>，若有所思</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">仰头动作要慢</span></li>
+<li><span class="hl">夜景闪光灯补光</span> &mdash; 侧面打可冻结花瓣</li>
+<li><span class="hl">构图留上方空间给花</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略低仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">闪灯侧打</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">800+</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外夜樱</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 关灯+补光</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose32.png" alt="夜樱·伞立" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 32</div>
+      <div class="pose-img-title">
+        <h2>夜樱·伞立</h2>
+        <div class="mood">孤独 · 壮美 · 全身</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">夜樱满开，她撑伞站在花树下——一个人的樱花季。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立全身像</strong>，微侧</td></tr>
+<tr><td class="lbl">🤚 右手</td><td>撑伞，伞面在肩后打开</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>仰头或远望</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">低机位拍出气势</span></li>
+<li><span class="hl">伞和人物是唯一暖色</span></li>
+<li><span class="hl">可以做手机壁纸</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">低机位仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">补光+现场灯</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">1000+</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外夜樱</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>无室内替代，需户外</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose33.png" alt="夜樱·接瓣" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 33</div>
+      <div class="pose-img-title">
+        <h2>夜樱·接瓣</h2>
+        <div class="mood">温柔 · 梦境 · 治愈</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">夜樱下撑伞伸手接花瓣——这片花瓣，是给路明非的。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td>撑伞</td></tr>
+<tr><td class="lbl">🤲 左手</td><td><strong>伸手接飘落花瓣</strong>，手掌朝上</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向手掌</strong></td></tr>
+<tr><td class="lbl">👄 嘴</td><td>微微<strong>嘟嘴</strong>——专注</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">和25是日夜配对</span></li>
+<li><span class="hl">需要助手撒花瓣+连拍</span></li>
+<li><span class="hl">LED暖光从下方打</span> &mdash; 像捧着一盏灯</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">平视半身</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50-85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">LED暖光</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">800-1600</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外夜樱</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">09 日式和风</span> 关灯+撒花瓣</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose34.png" alt="夜樱·伞下" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 34</div>
+      <div class="pose-img-title">
+        <h2>夜樱·伞下</h2>
+        <div class="mood">空灵 · 唯美 · 半身</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">伞下拂花枝——前景花瓣虚化成梦。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td>撑伞搭肩上</td></tr>
+<tr><td class="lbl">🤲 左手</td><td><strong>轻拂身旁樱花枝</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看向花枝</strong></td></tr>
+<tr><td class="lbl">🌸 前景</td><td><strong>大量虚化花瓣做前景</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">前景虚化是灵魂</span></li>
+<li><span class="hl">拂花枝要轻</span> &mdash; 指尖碰到即可</li>
+<li><span class="hl">大光圈+长焦</span> &mdash; f/1.4-1.8 + 85mm</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">平视或略低</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">85mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/1.4-1.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">侧面补光</div></div>
+<div class="tip-box"><div class="t">前景</div><div class="v">樱花枝虚化</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外夜樱</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>无室内替代</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose35.png" alt="樱树·远景" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 35</div>
+      <div class="pose-img-title">
+        <h2>樱树·远景</h2>
+        <div class="mood">史诗 · 孤寂 · 壮美</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">满开樱花树下，一个撑伞的红色身影——人是风景的点缀。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 构图</td><td><strong>景大人极小</strong>，樱花树占画面80%+</td></tr>
+<tr><td class="lbl">🤚 道具</td><td>撑红伞站立——<strong>红伞是唯一标记</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">最不像人像的人像照</span></li>
+<li><span class="hl">红伞必须存在</span> &mdash; 没有伞人就消失了</li>
+<li><span class="hl">适合做封面/壁纸</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">远距离平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/4-5.6</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">现场灯光</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">1600+</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">户外大樱花树</span> 只能户外</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p>无替代</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose36.png" alt="举鸭·笑" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 36</div>
+      <div class="pose-img-title">
+        <h2>举鸭·笑</h2>
+        <div class="mood">活泼 · 可爱 · 互动</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">举起一只小黄鸭对着镜头笑——看!这是我的朋友!</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td><strong>举起一只小黄鸭</strong>到脸旁</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>看镜头</strong>，开心大笑</td></tr>
+<tr><td class="lbl">🦆 道具</td><td>桌上<strong>一群小黄鸭</strong>+画板</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">笑得最开心的一张</span> &mdash; 要真笑</li>
+<li><span class="hl">小黄鸭举到脸旁</span> &mdash; 像在介绍朋友</li>
+<li><span class="hl">鸭群是背景故事</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.0-2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">暖色自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span> 矮桌位置</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何场景</span>+小黄鸭</p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose37.png" alt="举牌·告白" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 37</div>
+      <div class="pose-img-title">
+        <h2>举牌·告白</h2>
+        <div class="mood">表白 · 甜蜜 · 互动</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">双手举起写着&ldquo;Sakura&mdash;大好きです&rdquo;的画板——对镜头告白。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤲 双手</td><td><strong>双手举画板</strong>到胸前</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>从画板上方直视镜头</strong></td></tr>
+<tr><td class="lbl">👄 嘴</td><td>嘴唇<strong>微启</strong>——害羞但认真</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">画板内容可自定义</span></li>
+<li><span class="hl">&ldquo;从板后面探头看&rdquo;</span> &mdash; 半遮半露更有互动感</li>
+<li><span class="hl">表情要认真but害羞</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何场景</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose38.png" alt="举画·笑" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 38</div>
+      <div class="pose-img-title">
+        <h2>举画·笑</h2>
+        <div class="mood">天真 · 活力 · 得意</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">举起画板展示小怪兽涂鸦——看我画的!厉害吧!</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🤚 右手</td><td><strong>单手举画板</strong>展示</td></tr>
+<tr><td class="lbl">🤲 左手</td><td>指向画板</td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>直视镜头</strong>，得意笑</td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">动态感</span> &mdash; 像刚画完迫不及待展示</li>
+<li><span class="hl">小怪兽画要提前准备</span></li>
+<li><span class="hl">和08&ldquo;画板·念&rdquo;是对比组</span></li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">正面平视</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">35-50mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">自然暖光</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">09 日式和风</span></p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何场景</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"><span>🌸</span></div>
+  <div class="pose-card">
+    <div class="pose-img-wrap">
+      <img src="images/pose39.png" alt="暗室·伞立" loading="lazy">
+      <div class="pose-img-overlay"></div>
+      <div class="pose-img-badge">POSE 39</div>
+      <div class="pose-img-title">
+        <h2>暗室·伞立</h2>
+        <div class="mood">华丽 · 神性 · 终曲</div>
+      </div>
+    </div>
+    <div class="pose-body">
+      <div class="pose-quote">暗室中站立撑伞，灯笼和樱花在黑暗中发光——华丽的终章。</div>
+      <div class="block-label">📐 动作分解</div>
+      <table class="detail-table"><tr><td class="lbl">🎎 身体</td><td><strong>站立</strong>，身体微侧转</td></tr>
+<tr><td class="lbl">🤚 右手</td><td><strong>高举撑伞</strong></td></tr>
+<tr><td class="lbl">👀 眼神</td><td><strong>侧望远方</strong>，神情淡然</td></tr>
+<tr><td class="lbl">🌸 氛围</td><td>多把和伞散落+灯笼暖光+樱花——<strong>暗黑华丽风</strong></td></tr></table>
+      <div class="block-label">⭐ 灵魂关键点</div>
+      <ul class="soul-list"><li><span class="hl">这是压轴收尾</span> &mdash; 放在最后，情绪推到最高</li>
+<li><span class="hl">暗处只留轮廓和亮点</span></li>
+<li><span class="hl">和11&ldquo;伞阵·暗&rdquo;是配对</span> &mdash; 一坐一站</li></ul>
+      <div class="block-label">📷 摄影要点</div>
+      <div class="tips-grid"><div class="tip-box"><div class="t">机位</div><div class="v">略低仰拍</div></div>
+<div class="tip-box"><div class="t">焦段</div><div class="v">24-35mm</div></div>
+<div class="tip-box"><div class="t">光圈</div><div class="v">f/2.8</div></div>
+<div class="tip-box"><div class="t">光线</div><div class="v">点光源+灯笼</div></div>
+<div class="tip-box"><div class="t">ISO</div><div class="v">800-1600</div></div></div>
+      <div class="block-label">🏠 场景适配</div>
+      <div class="scene-box">
+        <h4>✅ 最佳匹配</h4><p><span class="tag">18 暗黑哥特</span> 或 <span class="tag">09 日式和风</span> 关灯</p>
+        <h4 style="margin-top:10px">🔄 替代方案</h4><p><span class="tag">任何可全黑空间</span>+灯笼</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="footer">
+  <p class="footer-q">“我可以变成一只<em>鸟</em>。”<br>— 上杉绘梨衣</p>
+  <p class="footer-c">上杉绘梨衣 · COSPLAY 拍摄策划案 · 40 POSES · 2026</p>
+</div>
+<script>
+(function(){
+  var c=document.getElementById('sakura');
+  var colors=['#FFB7C5','#FFD4DD','#FFC5D0','#FF9EB5'];
+  for(var i=0;i<18;i++){
+    var p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(9+Math.random()*14)+'s';
+    p.style.animationDelay=Math.random()*12+'s';
+    var s=8+Math.random()*7;
+    p.style.width=s+'px';p.style.height=s+'px';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.appendChild(p);
+  }
+})();
+</script>
+</body>
+</html>
