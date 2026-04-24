@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>上杉绘梨衣 · 幻灯片</title>
+<title>上杉绘梨衣 · 幻灯片 v3</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 :root{--red:#C41E3A;--red-light:#E8394D;--gold:#D4A853;--white:#FFF8F0;--cream:#FDF5EC;--black:#0D0A0C;--dark:#1A1118;--gray:#6B5E66;--gray-light:#B8A8AE;--sakura:#FFB7C5}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -37,11 +37,13 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
 /* pose slide layout */
 .pose-slide-layout{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:0;background:linear-gradient(180deg,#0D0A0C 0%,#150D11 100%)}
 
-/* image area */
-.pose-img-area{flex:0 0 42%;position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1218,#231820)}
-.pose-img-area img{width:100%;height:100%;object-fit:cover;animation:iR .8s ease both}
-@keyframes iR{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
-.pose-num{position:absolute;top:8px;right:8px;background:rgba(196,30,58,.75);backdrop-filter:blur(8px);color:#fff;font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:20px;font-weight:500;z-index:3}
+/* image area - v3: contain + blurred background to avoid cropping head/feet */
+.pose-img-area{flex:0 0 55%;position:relative;overflow:hidden;background:#0a0608}
+.pose-img-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(30px) brightness(.4) saturate(1.3);transform:scale(1.15);z-index:0}
+.pose-img-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(13,10,12,.55) 100%)}
+.pose-img-area img{position:relative;z-index:2;width:100%;height:100%;object-fit:contain;animation:iR .8s ease both;display:block}
+@keyframes iR{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+.pose-num{position:absolute;top:10px;right:10px;background:rgba(196,30,58,.75);backdrop-filter:blur(8px);color:#fff;font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:20px;font-weight:500;z-index:3}
 
 /* scrollable info area */
 .pose-info-scroll{flex:1;overflow-y:auto;padding:12px 14px 16px;-webkit-overflow-scrolling:touch}
@@ -100,6 +102,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-00">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose00.png')"></div>
         <img src="images/pose00.png" alt="跪坐横刀" loading="lazy">
         <div class="pose-num">POSE 00</div>
       </div>
@@ -119,6 +122,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-01">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose01.png')"></div>
         <img src="images/pose01.png" alt="拔刀·凌" loading="lazy">
         <div class="pose-num">POSE 01</div>
       </div>
@@ -138,6 +142,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-02">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose02.png')"></div>
         <img src="images/pose02.png" alt="花隐·守" loading="lazy">
         <div class="pose-num">POSE 02</div>
       </div>
@@ -157,6 +162,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-03">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose03.png')"></div>
         <img src="images/pose03.png" alt="回眸·恋" loading="lazy">
         <div class="pose-num">POSE 03</div>
       </div>
@@ -176,6 +182,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-04">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose04.png')"></div>
         <img src="images/pose04.png" alt="廊下·憩" loading="lazy">
         <div class="pose-num">POSE 04</div>
       </div>
@@ -195,6 +202,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-05">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose05.png')"></div>
         <img src="images/pose05.png" alt="红伞·坐" loading="lazy">
         <div class="pose-num">POSE 05</div>
       </div>
@@ -214,6 +222,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-06">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose06.png')"></div>
         <img src="images/pose06.png" alt="托腮·盼" loading="lazy">
         <div class="pose-num">POSE 06</div>
       </div>
@@ -233,6 +242,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-07">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose07.png')"></div>
         <img src="images/pose07.png" alt="挥刃·斩" loading="lazy">
         <div class="pose-num">POSE 07</div>
       </div>
@@ -252,6 +262,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-08">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose08.png')"></div>
         <img src="images/pose08.png" alt="画板·念" loading="lazy">
         <div class="pose-num">POSE 08</div>
       </div>
@@ -271,6 +282,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-09">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose09.png')"></div>
         <img src="images/pose09.png" alt="花伞·立" loading="lazy">
         <div class="pose-num">POSE 09</div>
       </div>
@@ -290,6 +302,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-10">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose10.png')"></div>
         <img src="images/pose10.png" alt="花中·探" loading="lazy">
         <div class="pose-num">POSE 10</div>
       </div>
@@ -309,6 +322,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-11">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose11.png')"></div>
         <img src="images/pose11.png" alt="伞阵·暗" loading="lazy">
         <div class="pose-num">POSE 11</div>
       </div>
@@ -328,6 +342,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-12">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose12.png')"></div>
         <img src="images/pose12.png" alt="抱刀·萌" loading="lazy">
         <div class="pose-num">POSE 12</div>
       </div>
@@ -347,6 +362,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-13">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose13.png')"></div>
         <img src="images/pose13.png" alt="廊边·坐" loading="lazy">
         <div class="pose-num">POSE 13</div>
       </div>
@@ -366,6 +382,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-14">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose14.png')"></div>
         <img src="images/pose14.png" alt="神社·伞行" loading="lazy">
         <div class="pose-num">POSE 14</div>
       </div>
@@ -385,6 +402,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-15">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose15.png')"></div>
         <img src="images/pose15.png" alt="神社·伞立" loading="lazy">
         <div class="pose-num">POSE 15</div>
       </div>
@@ -404,6 +422,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-16">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose16.png')"></div>
         <img src="images/pose16.png" alt="夜廊·伞立" loading="lazy">
         <div class="pose-num">POSE 16</div>
       </div>
@@ -423,6 +442,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-17">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose17.png')"></div>
         <img src="images/pose17.png" alt="樱灯·鸭" loading="lazy">
         <div class="pose-num">POSE 17</div>
       </div>
@@ -442,6 +462,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-18">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose18.png')"></div>
         <img src="images/pose18.png" alt="樱下·握拳" loading="lazy">
         <div class="pose-num">POSE 18</div>
       </div>
@@ -461,6 +482,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-19">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose19.png')"></div>
         <img src="images/pose19.png" alt="庭院·仰手" loading="lazy">
         <div class="pose-num">POSE 19</div>
       </div>
@@ -480,6 +502,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-20">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose20.png')"></div>
         <img src="images/pose20.png" alt="殿前·竖刀" loading="lazy">
         <div class="pose-num">POSE 20</div>
       </div>
@@ -499,6 +522,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-21">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose21.png')"></div>
         <img src="images/pose21.png" alt="殿前·抱刀" loading="lazy">
         <div class="pose-num">POSE 21</div>
       </div>
@@ -518,6 +542,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-22">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose22.png')"></div>
         <img src="images/pose22.png" alt="趴桌·鸭" loading="lazy">
         <div class="pose-num">POSE 22</div>
       </div>
@@ -537,6 +562,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-23">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose23.png')"></div>
         <img src="images/pose23.png" alt="跪伞·微笑" loading="lazy">
         <div class="pose-num">POSE 23</div>
       </div>
@@ -556,6 +582,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-24">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose24.png')"></div>
         <img src="images/pose24.png" alt="伞舞·举手" loading="lazy">
         <div class="pose-num">POSE 24</div>
       </div>
@@ -575,6 +602,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-25">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose25.png')"></div>
         <img src="images/pose25.png" alt="接瓣·侧身" loading="lazy">
         <div class="pose-num">POSE 25</div>
       </div>
@@ -594,6 +622,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-26">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose26.png')"></div>
         <img src="images/pose26.png" alt="托腮·盼B" loading="lazy">
         <div class="pose-num">POSE 26</div>
       </div>
@@ -613,6 +642,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-27">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose27.png')"></div>
         <img src="images/pose27.png" alt="回眸·恋B" loading="lazy">
         <div class="pose-num">POSE 27</div>
       </div>
@@ -632,6 +662,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-28">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose28.png')"></div>
         <img src="images/pose28.png" alt="樱廊·全景" loading="lazy">
         <div class="pose-num">POSE 28</div>
       </div>
@@ -651,6 +682,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-29">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose29.png')"></div>
         <img src="images/pose29.png" alt="樱中·回眸" loading="lazy">
         <div class="pose-num">POSE 29</div>
       </div>
@@ -670,6 +702,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-30">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose30.png')"></div>
         <img src="images/pose30.png" alt="托腮·持扇" loading="lazy">
         <div class="pose-num">POSE 30</div>
       </div>
@@ -689,6 +722,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-31">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose31.png')"></div>
         <img src="images/pose31.png" alt="夜樱·仰望" loading="lazy">
         <div class="pose-num">POSE 31</div>
       </div>
@@ -708,6 +742,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-32">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose32.png')"></div>
         <img src="images/pose32.png" alt="夜樱·伞立" loading="lazy">
         <div class="pose-num">POSE 32</div>
       </div>
@@ -727,6 +762,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-33">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose33.png')"></div>
         <img src="images/pose33.png" alt="夜樱·接瓣" loading="lazy">
         <div class="pose-num">POSE 33</div>
       </div>
@@ -746,6 +782,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-34">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose34.png')"></div>
         <img src="images/pose34.png" alt="夜樱·伞下" loading="lazy">
         <div class="pose-num">POSE 34</div>
       </div>
@@ -765,6 +802,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-35">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose35.png')"></div>
         <img src="images/pose35.png" alt="樱树·远景" loading="lazy">
         <div class="pose-num">POSE 35</div>
       </div>
@@ -784,6 +822,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-36">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose36.png')"></div>
         <img src="images/pose36.png" alt="举鸭·笑" loading="lazy">
         <div class="pose-num">POSE 36</div>
       </div>
@@ -803,6 +842,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-37">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose37.png')"></div>
         <img src="images/pose37.png" alt="举牌·告白" loading="lazy">
         <div class="pose-num">POSE 37</div>
       </div>
@@ -822,6 +862,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-38">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose38.png')"></div>
         <img src="images/pose38.png" alt="举画·笑" loading="lazy">
         <div class="pose-num">POSE 38</div>
       </div>
@@ -841,6 +882,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--black)
   <div class="slide" id="slide-39">
     <div class="pose-slide-layout">
       <div class="pose-img-area">
+        <div class="pose-img-bg" style="background-image:url('images/pose39.png')"></div>
         <img src="images/pose39.png" alt="暗室·伞立" loading="lazy">
         <div class="pose-num">POSE 39</div>
       </div>
